@@ -1,0 +1,14 @@
+.vs/
+[Oo]bj/
+[Bb]in/
+.nuget/
+*.user
+*.suo
+*.userprefs
+*DS_Store
+*.sln.ide
+*.png
+*.jpg
+*.jpeg
+*.wav
+*.mp3
