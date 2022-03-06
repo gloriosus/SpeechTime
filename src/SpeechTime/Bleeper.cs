@@ -4,20 +4,20 @@ using System.Linq;
 using System.Media;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Media;
 using SpeechTime.Clocks;
 
 namespace SpeechTime
 {
     public class Bleeper
     {
-        private SoundPlayer soundPlayer;
+        private MediaPlayer mediaPlayer;
         private bool wasFired = false;
 
         public Bleeper(string filePath)
         {
-            soundPlayer = new SoundPlayer(filePath);
-            soundPlayer.Load();
+            mediaPlayer = new MediaPlayer();
+            mediaPlayer.Open(new Uri(filePath));
         }
 
         public void Play(TimeSpan currentValue, TimeSpan timeBeforeFiring)
@@ -27,7 +27,12 @@ namespace SpeechTime
                 if (!wasFired)
                 {
                     wasFired = true;
-                    soundPlayer.Play();
+
+                    if (mediaPlayer.HasAudio)
+                    {
+                        mediaPlayer.Position = TimeSpan.Zero;
+                        mediaPlayer.Play();
+                    }
                 }
             }
             else
