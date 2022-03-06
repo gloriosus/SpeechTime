@@ -8,7 +8,6 @@ namespace SpeechTime.Clocks
         bool IsEnabled { get; }
 
         void Start();
-        void Start(long syncDiff);
         void Stop();
         void Reset();
     }

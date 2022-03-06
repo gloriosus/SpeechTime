@@ -110,7 +110,7 @@ namespace SpeechTime.Windows
 
         private void uiUpdateTimer_Tick(object sender, EventArgs e)
         {
-            DateTime dateTimeValue = synchronizer.CurrentDateTime;
+            DateTime dateTimeValue = DateTime.Now;
             TimeSpan timerValue = Timer.Instance.CurrentValue;
             TimeSpan stopwatchValue = Stopwatch.Instance.CurrentValue;
 
@@ -137,25 +137,10 @@ namespace SpeechTime.Windows
             if (e.Key == Key.F2)
             {
                 if (!Stopwatch.Instance.IsEnabled)
-                    synchronizer.Start(Stopwatch.Instance);
+                    Stopwatch.Instance.Start();
                 else
                     Stopwatch.Instance.Stop();
             }
-
-            if (e.Key == Key.F3)
-            {
-                var d1 = new DateTime(2022, 03, 04, 17, 19, 23, 300);
-                var d2 = new DateTime(d1.Year, d1.Month, d1.Day, d1.Hour, d1.Minute, d1.Second);
-                var t1 = d1.Ticks;
-
-                var cut = t1 / 10000000L;
-
-                var result = d1.Ticks - d2.Ticks;
-
-                MessageBox.Show(d1.Subtract(d2).ToString("yyyy-MM-dd HH:mm:ss.fffffff"));
-            }
         }
-
-        private Synchronizer synchronizer = new Synchronizer(true);
     }
 }

@@ -40,12 +40,6 @@ namespace SpeechTime.Clocks
             startTimeTicks = DateTime.Now.Ticks;
         }
 
-        public void Start(long syncDiff)
-        {
-            IsEnabled = true;
-            startTimeTicks = DateTime.Now.Ticks - syncDiff;
-        }
-
         public void Stop()
         {
             IsEnabled = false;
