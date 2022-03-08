@@ -36,9 +36,9 @@ namespace SpeechTime.Windows
             TotalTimeLabel.SetBinding(ContentProperty, new Binding("TotalTimeLabelText"));
             DataContext = this;
 
-            Timer.Instance.InitialValue = AppSettings.SpeechTimeLimit;
+            Timer.Instance.InitialValue = AppSettings.TimerLimit;
 
-            bleeper = new Bleeper(AppSettings.SignalSound);
+            bleeper = new Bleeper(AppSettings.Bleeper);
 
             uiUpdateTimer = new DispatcherTimer(TimeSpan.FromMilliseconds(AppSettings.UIUpdateIntervalMs), DispatcherPriority.Normal, uiUpdateTimer_Tick, this.Dispatcher);
             uiUpdateTimer.Start();
@@ -114,7 +114,7 @@ namespace SpeechTime.Windows
             TimeSpan timerValue = Timer.Instance.CurrentValue;
             TimeSpan stopwatchValue = Stopwatch.Instance.CurrentValue;
 
-            CurrentDateTimeLabelText = AppSettings.TargetTimeZoneLabel + dateTimeValue.ToString("HH:mm:ss dd.MM.yyyy");
+            CurrentDateTimeLabelText = "Время местное: " + dateTimeValue.ToString("HH:mm:ss dd.MM.yyyy");
             SpeechTimeLimitLabelText = "Время доклада: " + timerValue.ToString(@"hh\:mm\:ss");
             TotalTimeLabelText = "Время совещания: " + stopwatchValue.ToString(@"hh\:mm\:ss");
 

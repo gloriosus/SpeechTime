@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Collections.Specialized;
+using System.Windows.Media;
+
+using SpeechTime.Helpers;
 
 namespace SpeechTime
 {
@@ -16,19 +14,14 @@ namespace SpeechTime
     {
         public App()
         {
-            AppSettings.TargetTimeZone = ConfigurationManager.AppSettings.Get("TargetTimeZone");
-            AppSettings.TargetTimeZoneLabel = ConfigurationManager.AppSettings.Get("TargetTimeZoneLabel");
-            // TODO: replace to the TryParse method
-            AppSettings.SpeechTimeLimit = TimeSpan.Parse(ConfigurationManager.AppSettings.Get("SpeechTimeLimit"));
-            AppSettings.SignalSound = AppDomain.CurrentDomain.BaseDirectory + ConfigurationManager.AppSettings.Get("SignalSound");
-            AppSettings.MainWindowBackground = ConfigurationManager.AppSettings.Get("MainWindowBackground");
-            AppSettings.MainWindowForeground = ConfigurationManager.AppSettings.Get("MainWindowForeground");
-            AppSettings.SpecialWindowBackground = ConfigurationManager.AppSettings.Get("SpecialWindowBackground");
-            // TODO: replace to the TryParse metho
-            AppSettings.MainWindowLocation = Int32.Parse(ConfigurationManager.AppSettings.Get("MainWindowLocation"));
-            // TODO: replace to the TryParse metho
-            AppSettings.SpecialWindowLocation = Int32.Parse(ConfigurationManager.AppSettings.Get("SpecialWindowLocation"));
-            AppSettings.UIUpdateIntervalMs = Int32.Parse(ConfigurationManager.AppSettings.Get("UIUpdateIntervalMs"));
+            AppSettings.TimerLimit = SettingsHelper.GetValueOrDefault(ConfigurationManager.AppSettings.Get("TimerLimit"), TimeSpan.Zero);
+            AppSettings.Bleeper = SettingsHelper.GetAbsolutePath(ConfigurationManager.AppSettings.Get("Bleeper"));
+            AppSettings.PanelWindowBackground = SettingsHelper.GetValueOrDefault(ConfigurationManager.AppSettings.Get("PanelWindowBackground"), Colors.Black);
+            AppSettings.PanelWindowForeground = SettingsHelper.GetValueOrDefault(ConfigurationManager.AppSettings.Get("PanelWindowForeground"), Colors.Lime);
+            AppSettings.TimerWindowBackgroundImage = SettingsHelper.GetAbsolutePath(ConfigurationManager.AppSettings.Get("TimerWindowBackgroundImage"));
+            AppSettings.PanelWindowScreen = SettingsHelper.GetValueOrDefault(ConfigurationManager.AppSettings.Get("PanelWindowScreen"), 1);
+            AppSettings.TimerWindowScreen = SettingsHelper.GetValueOrDefault(ConfigurationManager.AppSettings.Get("TimerWindowScreen"), 1);
+            AppSettings.UIUpdateIntervalMs = SettingsHelper.GetValueOrDefault(ConfigurationManager.AppSettings.Get("UIUpdateIntervalMs"), 200);
         }
     }
 }

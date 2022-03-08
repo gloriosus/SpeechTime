@@ -14,7 +14,7 @@ namespace SpeechTime.Helpers
             var screens = System.Windows.Forms.Screen.AllScreens;
 
             // TODO: possible error at 'MainWindowLocation'
-            int screenNumber = AppSettings.MainWindowLocation - 1;
+            int screenNumber = AppSettings.PanelWindowScreen - 1;
 
             if (screens[screenNumber] != null)
             {

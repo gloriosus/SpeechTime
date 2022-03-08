@@ -106,11 +106,6 @@ namespace SpeechTime.Windows
             {
                 Stopwatch.Instance.Reset();
             }
-
-            if (e.Key == Key.F1)
-            {
-                MessageBox.Show(AppSettings.TargetTimeZone);
-            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
