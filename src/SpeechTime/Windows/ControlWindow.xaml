@@ -24,14 +24,14 @@
             <Label Content="Время доклада:" Padding="0 5 0 5" Margin="15 0 0 0"></Label>
             <Label x:Name="TimerReflectionLabel" Content="00:00:00" FontSize="18pt" Padding="0" Margin="15 0 0 0"></Label>
             <StackPanel x:Name="TimerControlPanel" Orientation="Horizontal" Height="42" Background="MistyRose">
-                <Button x:Name="TimerStartStopButton" Margin="15 7 0 7" ToolTip="Старт/Пауза">
+                <Button x:Name="TimerStartStopButton" Margin="15 7 0 7" ToolTip="Старт/Пауза" Click="TimerStartStopButton_Click">
                     <Viewbox Width="24" Height="24">
                         <Canvas Width="24" Height="24">
                             <Path Fill="Black" Data="M3,5V19L11,12M13,19H16V5H13M18,5V19H21V5" />
                         </Canvas>
                     </Viewbox>
                 </Button>
-                <Button x:Name="TimerResetButton" Margin="15 7 0 7" ToolTip="Стоп (сбросить)">
+                <Button x:Name="TimerResetButton" Margin="15 7 0 7" ToolTip="Стоп (сбросить)" Click="TimerResetButton_Click">
                     <Viewbox Width="24" Height="24">
                         <Canvas Width="24" Height="24">
                             <Path Fill="Black" Data="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M14.59,8L12,10.59L9.41,8L8,9.41L10.59,12L8,14.59L9.41,16L12,13.41L14.59,16L16,14.59L13.41,12L16,9.41L14.59,8Z" />
@@ -45,14 +45,14 @@
             <Label Content="Время совещания:" Padding="0 5 0 5" Margin="15 0 0 0"></Label>
             <Label x:Name="StopwatchReflectionLabel" Content="00:00:00" FontSize="18pt" Padding="0" Margin="15 0 0 0"></Label>
             <StackPanel x:Name="StopwatchControlPanel" Orientation="Horizontal" Height="42" Background="MistyRose">
-                <Button x:Name="StopwatchStartStopButton" Margin="15 7 0 7" ToolTip="Старт/Пауза">
+                <Button x:Name="StopwatchStartStopButton" Margin="15 7 0 7" ToolTip="Старт/Пауза" Click="StopwatchStartStopButton_Click">
                     <Viewbox Width="24" Height="24">
                         <Canvas Width="24" Height="24">
                             <Path Fill="Black" Data="M3,5V19L11,12M13,19H16V5H13M18,5V19H21V5" />
                         </Canvas>
                     </Viewbox>
                 </Button>
-                <Button x:Name="StopwatchResetButton" Margin="15 7 0 7" ToolTip="Стоп (сбросить)">
+                <Button x:Name="StopwatchResetButton" Margin="15 7 0 7" ToolTip="Стоп (сбросить)" Click="StopwatchResetButton_Click">
                     <Viewbox Width="24" Height="24">
                         <Canvas Width="24" Height="24">
                             <Path Fill="Black" Data="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M14.59,8L12,10.59L9.41,8L8,9.41L10.59,12L8,14.59L9.41,16L12,13.41L14.59,16L16,14.59L13.41,12L16,9.41L14.59,8Z" />
@@ -104,8 +104,8 @@
             </StackPanel>
 
             <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Background="AliceBlue" Orientation="Horizontal">
-                <Button x:Name="AcceptSettingsButton" Content="Применить" Width="100" Height="20" Margin="15 0 0 0"></Button>
-                <Button x:Name="CancelSettingsButton" Content="Отменить" Width="100" Height="20" Margin="15 0 0 0"></Button>
+                <Button x:Name="AcceptSettingsButton" Content="Применить" Width="100" Height="20" Margin="15 0 0 0" Click="AcceptSettingsButton_Click"></Button>
+                <Button x:Name="CancelSettingsButton" Content="Отменить" Width="100" Height="20" Margin="15 0 0 0" Click="CancelSettingsButton_Click"></Button>
             </StackPanel>
         </Grid>
     </Grid>
