@@ -6,8 +6,7 @@
         xmlns:local="clr-namespace:SpeechTime.Windows"
         mc:Ignorable="d"
         Title="PanelWindow" Height="{Binding Source={x:Static SystemParameters.PrimaryScreenHeight}}" Width="{Binding Source={x:Static SystemParameters.PrimaryScreenWidth}}" 
-        WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="Manual" Background="{x:Null}" 
-        ResizeMode="CanResizeWithGrip" Topmost="True">
+        AllowsTransparency="True" Background="{x:Null}" WindowStartupLocation="Manual" WindowStyle="None" Topmost="True">
 
     <Grid x:Name="Panel" Height="{Binding Source={x:Static SystemParameters.PrimaryScreenHeight}, Converter={StaticResource WindowSizeConverter}, ConverterParameter='0.05'}" VerticalAlignment="Top" Background="#000000">
         <Grid.RowDefinitions>

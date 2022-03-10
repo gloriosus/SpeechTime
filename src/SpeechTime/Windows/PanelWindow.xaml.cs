@@ -25,8 +25,8 @@ namespace SpeechTime.Windows
     {
         private Timer timer = Timer.Instance;
         private Stopwatch stopwatch = Stopwatch.Instance;
-        private Bleeper bleeper;
-        private DispatcherTimer dispatcherTimer;
+
+        internal DispatcherTimer DispatcherTimer;
 
         public PanelWindow()
         {
@@ -34,11 +34,13 @@ namespace SpeechTime.Windows
 
             WindowHelper.PlaceWindowOnScreen(this);
 
-            timer.InitialValue = AppSettings.TimerLimit;
-            bleeper = new Bleeper(AppSettings.Bleeper);
+            this.Panel.Background = new SolidColorBrush(AppSettings.PanelWindowBackground);
+            this.CurrentDateTimeLabel.Foreground = new SolidColorBrush(AppSettings.PanelWindowForeground);
+            this.TimerValueLabel.Foreground = new SolidColorBrush(AppSettings.PanelWindowForeground);
+            this.StopwatchValueLabel.Foreground = new SolidColorBrush(AppSettings.PanelWindowForeground);
 
-            dispatcherTimer = new DispatcherTimer(TimeSpan.FromMilliseconds(AppSettings.UIUpdateIntervalMs), DispatcherPriority.Normal, dispatcherTimer_Tick, this.Dispatcher);
-            dispatcherTimer.Start();
+            DispatcherTimer = new DispatcherTimer(TimeSpan.FromMilliseconds(AppSettings.UIUpdateIntervalMs), DispatcherPriority.Normal, dispatcherTimer_Tick, this.Dispatcher);
+            DispatcherTimer.Start();
         }
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
@@ -50,11 +52,6 @@ namespace SpeechTime.Windows
             CurrentDateTimeLabel.Content = "Время местное: " + dateTimeValue.ToString("HH:mm:ss dd.MM.yyyy");
             TimerValueLabel.Content = "Время доклада: " + timerValue.ToString(@"hh\:mm\:ss");
             StopwatchValueLabel.Content = "Время совещания: " + stopwatchValue.ToString(@"hh\:mm\:ss");
-
-            bleeper.Play(timerValue, new TimeSpan(0, 0, 10));
-
-            if (timerValue.Equals(TimeSpan.Zero))
-                timer.Reset();
         }
     }
 }
