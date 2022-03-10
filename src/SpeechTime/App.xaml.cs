@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Media;
 
 using SpeechTime.Helpers;
+using SpeechTime.Extensions;
 
 namespace SpeechTime
 {
@@ -22,6 +23,20 @@ namespace SpeechTime
             AppSettings.PanelWindowScreen = SettingsHelper.GetValueOrDefault(ConfigurationManager.AppSettings.Get("PanelWindowScreen"), 1);
             AppSettings.TimerWindowScreen = SettingsHelper.GetValueOrDefault(ConfigurationManager.AppSettings.Get("TimerWindowScreen"), 1);
             AppSettings.UIUpdateIntervalMs = SettingsHelper.GetValueOrDefault(ConfigurationManager.AppSettings.Get("UIUpdateIntervalMs"), 200);
+        }
+
+        private void Application_Exit(object sender, ExitEventArgs e)
+        {
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+            config.AppSettings.Settings["TimerLimit"].Value = AppSettings.TimerLimit.ToString(@"hh\:mm\:ss");
+            config.AppSettings.Settings["PanelWindowBackground"].Value = AppSettings.PanelWindowBackground.ToHexString();
+            config.AppSettings.Settings["PanelWindowForeground"].Value = AppSettings.PanelWindowForeground.ToHexString();
+            config.AppSettings.Settings["PanelWindowScreen"].Value = AppSettings.PanelWindowScreen.ToString();
+            config.AppSettings.Settings["TimerWindowScreen"].Value = AppSettings.TimerWindowScreen.ToString();
+            config.AppSettings.Settings["UIUpdateIntervalMs"].Value = AppSettings.UIUpdateIntervalMs.ToString();
+
+            config.Save();
         }
     }
 }
