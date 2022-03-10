@@ -95,12 +95,12 @@
     <Compile Include="Windows\PanelWindow.xaml.cs">
       <DependentUpon>PanelWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\TestWindow.xaml.cs">
-      <DependentUpon>TestWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Windows\TimerWindow.xaml.cs">
+      <DependentUpon>TimerWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Resources.xaml">
       <SubType>Designer</SubType>
@@ -114,7 +114,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\TestWindow.xaml">
+    <Page Include="Windows\TimerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

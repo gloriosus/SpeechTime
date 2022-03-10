@@ -27,6 +27,9 @@ namespace SpeechTime.Windows
         private Bleeper bleeper;
         private DispatcherTimer dispatcherTimer;
 
+        private PanelWindow panelWindow;
+        private TimerWindow timerWindow;
+
         public ControlWindow()
         {
             InitializeComponent();
@@ -118,13 +121,17 @@ namespace SpeechTime.Windows
             UIUpdateIntervalTextBox.Text = AppSettings.UIUpdateIntervalMs.ToString();
 
             timer.InitialValue = AppSettings.TimerLimit;
-            // PanelWindowBackground
-            // PanelWindowForeground
-            // PanelWindowScreen
-            // TimerWindowScreen
+            timer.Reset();
+
+            panelWindow.Panel.Background = new SolidColorBrush(AppSettings.PanelWindowBackground);
+            panelWindow.CurrentDateTimeLabel.Foreground = new SolidColorBrush(AppSettings.PanelWindowForeground);
+            panelWindow.TimerValueLabel.Foreground = new SolidColorBrush(AppSettings.PanelWindowForeground);
+            panelWindow.StopwatchValueLabel.Foreground = new SolidColorBrush(AppSettings.PanelWindowForeground);
+            WindowHelper.PlaceWindowOnScreen(panelWindow);
+            WindowHelper.PlaceWindowOnScreen(timerWindow);
             dispatcherTimer.Interval = TimeSpan.FromMilliseconds(AppSettings.UIUpdateIntervalMs);
-            // panelwindow dispatcher timer
-            // timerwindow dispatcher timer
+            panelWindow.DispatcherTimer.Interval = TimeSpan.FromMilliseconds(AppSettings.UIUpdateIntervalMs);
+            timerWindow.DispatcherTimer.Interval = TimeSpan.FromMilliseconds(AppSettings.UIUpdateIntervalMs);
         }
 
         private void CancelSettingsButton_Click(object sender, RoutedEventArgs e)
@@ -135,6 +142,17 @@ namespace SpeechTime.Windows
             PanelWindowScreenTextBox.Text = AppSettings.PanelWindowScreen.ToString();
             TimerWindowScreenTextBox.Text = AppSettings.TimerWindowScreen.ToString();
             UIUpdateIntervalTextBox.Text = AppSettings.UIUpdateIntervalMs.ToString();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            panelWindow = new PanelWindow();
+            panelWindow.Owner = this;
+            panelWindow.Show();
+
+            timerWindow = new TimerWindow();
+            timerWindow.Owner = this;
+            timerWindow.Show();
         }
     }
 }

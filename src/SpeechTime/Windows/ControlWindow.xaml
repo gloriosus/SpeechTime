@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:SpeechTime.Windows"
         xmlns:colorpicker="clr-namespace:ColorPicker;assembly=ColorPicker"
         mc:Ignorable="d"
-        Title="Панель управления" Height="400" Width="400" WindowStartupLocation="CenterScreen" Topmost="True"
-        SizeToContent="Height" UseLayoutRounding="True" ResizeMode="NoResize">
+        Title="Панель управления" Height="400" Width="400" SizeToContent="Height" UseLayoutRounding="True" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen" Topmost="True"
+        Loaded="Window_Loaded">
     
     <Grid>
         <Grid.RowDefinitions>
