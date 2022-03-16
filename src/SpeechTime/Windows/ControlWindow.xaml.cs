@@ -61,7 +61,10 @@ namespace SpeechTime.Windows
             bleeper.Play(timerValue, new TimeSpan(0, 0, 10));
 
             if (timerValue.Equals(TimeSpan.Zero))
+            {
                 timer.Reset();
+                timerWindow.TimerValueLabel.Visibility = Visibility.Hidden;
+            }
         }
 
         private void TimerStartStopButton_Click(object sender, RoutedEventArgs e)
@@ -75,6 +78,7 @@ namespace SpeechTime.Windows
             {
                 timer.Start();
                 TimerControlPanel.Background = new SolidColorBrush(Colors.Honeydew);
+                timerWindow.TimerValueLabel.Visibility = Visibility.Visible;
             }
         }
 
@@ -82,6 +86,7 @@ namespace SpeechTime.Windows
         {
             timer.Reset();
             TimerControlPanel.Background = new SolidColorBrush(Colors.MistyRose);
+            timerWindow.TimerValueLabel.Visibility = Visibility.Hidden;
         }
 
         private void StopwatchStartStopButton_Click(object sender, RoutedEventArgs e)
@@ -122,6 +127,7 @@ namespace SpeechTime.Windows
 
             timer.InitialValue = AppSettings.TimerLimit;
             timer.Reset();
+            timerWindow.TimerValueLabel.Visibility = Visibility.Hidden;
 
             panelWindow.Panel.Background = new SolidColorBrush(AppSettings.PanelWindowBackground);
             panelWindow.CurrentDateTimeLabel.Foreground = new SolidColorBrush(AppSettings.PanelWindowForeground);
