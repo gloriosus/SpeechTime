@@ -10,7 +10,7 @@
     
     <Grid>
         <Viewbox>
-            <Label x:Name="TimerValueLabel" Content="00:10:00" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="480" Foreground="#ffffff" Padding="100 0 100 0"/>
+            <Label x:Name="TimerValueLabel" Content="00:10:00" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="480" Foreground="#ffffff" Padding="100 0 100 0" Visibility="Hidden"/>
         </Viewbox>
     </Grid>
 </Window>
