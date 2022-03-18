@@ -9,27 +9,18 @@ namespace SpeechTime.Helpers
 {
     public static class WindowHelper
     {
-        public static void PlaceWindowOnScreen(Window window)
+        public static void PlaceWindowOnScreen(Window window, int screenNumber)
         {
             var screens = System.Windows.Forms.Screen.AllScreens;
 
-            string windowName = window.GetType().Name;
+            int screenIndex = screenNumber - 1;
 
-            int screenNumber = 0;
+            bool isValidScreen = (screenIndex >= 0 & screenIndex < screens.Length) && screens[screenIndex] != null;
 
-            if (windowName.Equals("PanelWindow"))
+            if (isValidScreen)
             {
-                screenNumber = AppSettings.PanelWindowScreen - 1;
-            }
-            else if (windowName.Equals("TimerWindow"))
-            {
-                screenNumber = AppSettings.TimerWindowScreen - 1;
-            }
-
-            if ((screenNumber >= 0 & screenNumber < screens.Length) && screens[screenNumber] != null)
-            {
-                window.Left = screens[screenNumber].Bounds.Left;
-                window.Top = screens[screenNumber].Bounds.Top;
+                window.Left = screens[screenIndex].Bounds.Left;
+                window.Top = screens[screenIndex].Bounds.Top;
             }
         }
     }

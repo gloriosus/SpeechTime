@@ -32,7 +32,7 @@ namespace SpeechTime.Windows
         {
             InitializeComponent();
 
-            WindowHelper.PlaceWindowOnScreen(this);
+            WindowHelper.PlaceWindowOnScreen(this, AppSettings.PanelWindowScreen);
 
             this.Panel.Background = new SolidColorBrush(AppSettings.PanelWindowBackground);
             this.CurrentDateTimeLabel.Foreground = new SolidColorBrush(AppSettings.PanelWindowForeground);
