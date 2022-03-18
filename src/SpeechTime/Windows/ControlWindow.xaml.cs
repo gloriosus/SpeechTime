@@ -154,11 +154,9 @@ namespace SpeechTime.Windows
         {
             panelWindow = new PanelWindow();
             panelWindow.Owner = this;
-            panelWindow.Show();
 
             timerWindow = new TimerWindow();
             timerWindow.Owner = this;
-            timerWindow.Show();
         }
     }
 }

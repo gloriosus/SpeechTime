@@ -19,8 +19,16 @@ namespace SpeechTime.Helpers
 
             if (isValidScreen)
             {
+                var previousWindowState = window.WindowState;
+                window.WindowState = WindowState.Minimized;
                 window.Left = screens[screenIndex].Bounds.Left;
                 window.Top = screens[screenIndex].Bounds.Top;
+                window.WindowState = previousWindowState;
+                window.Show();
+            }
+            else
+            {
+                window.Hide();
             }
         }
     }
