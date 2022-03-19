@@ -30,7 +30,7 @@ namespace SpeechTime.Windows
         {
             InitializeComponent();
 
-            WindowHelper.PlaceWindowOnScreen(this);
+            WindowHelper.PlaceWindowOnScreen(this, AppSettings.TimerWindowScreen);
 
             var backgroundImage = new ImageBrush(new BitmapImage(new Uri(AppSettings.TimerWindowBackgroundImage, UriKind.Absolute)));
             backgroundImage.Stretch = Stretch.Fill;

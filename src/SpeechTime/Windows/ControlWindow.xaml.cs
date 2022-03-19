@@ -34,7 +34,7 @@ namespace SpeechTime.Windows
         {
             InitializeComponent();
 
-            WindowHelper.PlaceWindowOnScreen(this);
+            WindowHelper.PlaceWindowOnScreen(this, 1);
 
             timer.InitialValue = AppSettings.TimerLimit;
             bleeper = new Bleeper(AppSettings.Bleeper);
@@ -133,8 +133,8 @@ namespace SpeechTime.Windows
             panelWindow.CurrentDateTimeLabel.Foreground = new SolidColorBrush(AppSettings.PanelWindowForeground);
             panelWindow.TimerValueLabel.Foreground = new SolidColorBrush(AppSettings.PanelWindowForeground);
             panelWindow.StopwatchValueLabel.Foreground = new SolidColorBrush(AppSettings.PanelWindowForeground);
-            WindowHelper.PlaceWindowOnScreen(panelWindow);
-            WindowHelper.PlaceWindowOnScreen(timerWindow);
+            WindowHelper.PlaceWindowOnScreen(panelWindow, AppSettings.PanelWindowScreen);
+            WindowHelper.PlaceWindowOnScreen(timerWindow, AppSettings.TimerWindowScreen);
             dispatcherTimer.Interval = TimeSpan.FromMilliseconds(AppSettings.UIUpdateIntervalMs);
             panelWindow.DispatcherTimer.Interval = TimeSpan.FromMilliseconds(AppSettings.UIUpdateIntervalMs);
             timerWindow.DispatcherTimer.Interval = TimeSpan.FromMilliseconds(AppSettings.UIUpdateIntervalMs);
@@ -154,11 +154,9 @@ namespace SpeechTime.Windows
         {
             panelWindow = new PanelWindow();
             panelWindow.Owner = this;
-            panelWindow.Show();
 
             timerWindow = new TimerWindow();
             timerWindow.Owner = this;
-            timerWindow.Show();
         }
     }
 }
