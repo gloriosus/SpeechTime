@@ -3,6 +3,7 @@
 [Bb]in/
 .nuget/
 packages/
+artifacts/
 *.user
 *.suo
 *.userprefs
